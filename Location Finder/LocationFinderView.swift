@@ -46,6 +46,10 @@ struct LocationFinderView: View {
                     if let locationInfo = locationService.locationInfo {
                         Text(locationInfo.placeName)
                         Text(locationInfo.state)
+                        if locationService.errorString == nil {
+                            MapView(longitude: locationInfo.longitude, latitude: locationInfo.latitude)
+                                .padding()
+                        }
                     }
                 }
                 if locationService.locationInfo == nil {
@@ -55,8 +59,10 @@ struct LocationFinderView: View {
             }
             .navigationTitle("Location Finder")
             .onChange(of: selectedCountry) { _ in
-                locationService.reset()
                 code = ""
+            }
+            .onChange(of: code) { _ in
+                locationService.reset()
             }
         }
     }
