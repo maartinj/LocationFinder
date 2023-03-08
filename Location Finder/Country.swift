@@ -5,8 +5,6 @@
 //  Created by Marcin Jędrzejak on 06/03/2023.
 //
 
-// Film: 12:10
-
 import Foundation
 
 struct Country: Codable, Hashable {
